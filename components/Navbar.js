@@ -3,7 +3,7 @@
 const Navbar = () => {
     
   return (
-    <div className="flex justify-between p-5 navbar">
+    <div className="fixed flex w-screen justify-between p-5 navbar bg-white z-10">
         <div className="logo">
         <img src="logo1.svg" height={50} width={50} alt="text"/>
         </div>

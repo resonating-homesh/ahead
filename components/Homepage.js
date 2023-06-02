@@ -6,7 +6,7 @@ const Homepage = () => {
   return (
     <main>
       <div className="flex justify-between bg-EFEBFF rounded-large">
-        <div className="left px-20 py-32">
+        <div className="left px-20 py-44 my-20">
           <p className="text-xl font-medium">Ahead app</p>
           <p className="font-bold text-6xl my-4">
             {" "}
@@ -17,7 +17,7 @@ const Homepage = () => {
             <div className="full"></div>
           </div>
         </div>
-        <div className="right p-20 my-20 mx-20">
+        <div className="right p-20 py-44 my-20 mx-20">
           <div className="circle1 ">
             <div className="circle2"></div>
           </div>
