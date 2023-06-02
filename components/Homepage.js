@@ -1,6 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import VerticalSlider from "./VerticalSlider";
 
 const Homepage = () => {
   return (
@@ -23,7 +24,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-
+      {/* section 2*/}
       <div className="page2">
         <div className="upper-section flex justify-between px-32 py-20">
           <p className="font-bold  text-3xl">EQ beats IQ</p>
@@ -130,6 +131,86 @@ const Homepage = () => {
           </div>
         </div>
       </div>
+      {/* section 2 ends*/}
+      {/* section 3*/}
+      <div className="section3 px-32 py-28 overflow-hidden">
+      <div className="text">
+      <p className="text-xl font-medium">Built out of frustation</p>
+      <p className="text-6xl font-bold my-4">Meet the ahead app </p>
+      </div>
+      <div className="flex justify-between gap-96  overflow-hidden">
+        <div className="left my-28">
+          <img src="ghost-happy.svg" className="w-60 z-10 mx-24" />
+          <img src="circle.svg" className="circle w-64 "></img>
+          <img src="medal.svg" className="medal w-16"></img>
+          <img src="clutter-1.svg" className="clutter1 w-12"></img>
+        </div>
+        <div className="right my-28 mx-20">
+          <p className="text-2xl text-gray-600 " >
+            A personalized pocket coach that provides bite-sized, science-driven tools to boost emotional intelligence.
+          </p>
+          <p className="text-2xl my-4 text-gray-600 ">
+            Think of it as a pocket cheerleader towards a better, more fulfilling.
+          </p>
+        </div>
+      </div>
+      </div>
+      {/* section 3 ends*/}
+      {/* section 4*/}
+      <div className="section 4 px-40">
+        <p className="text-2xl" >Wrong with self-improvement & how we're fixing it.</p>
+        <div className="flex">
+        <p className="text-6xl font-bold my-3">Self-improvement. Ugh.</p>
+        <img src="ghost-crying.svg" className="w-16 mx-10"></img>
+        </div>
+        <div className="container my-5">
+          <div className="scrollable-content">
+            <VerticalSlider/>
+          </div>
+        </div>
+      </div>
+      {/* section 4 ends*/}
+      {/* section 5 */}
+      <div className="upper-section flex justify-between px-32 py-20 my-64">
+          <p className="font-bold  text-3xl">Be the best you<br/>with EQ</p>
+          <p className="text-xl">
+            Not having your emotions<br/> under control might be holding<br/> you back.
+          </p>
+          <p className="text-xl">
+            Additionally, not understanding
+            <br />
+            those of others stops you from
+            <br />
+            being parent, friend you can be.
+          </p>
+        </div>
+        {/* section 5 ends*/}
+        {/* section 6 */}
+        <div className="flex-col justify-center px-40">
+          <p className="text-center text-2xl font-semibold">Let your friends, family, and co-workers (anonymously) rate your social skills.</p>
+          <p className="text-center text-6xl my-4 font-bold"> Ever wondered what others think of you? </p>
+          <div className="line"></div>
+          <div className="flex justify-between">
+          <div className="flex-col justify-center align-middle">
+          <img src="medal.svg" className="w-40 align-middle justify-center"></img>
+          <p className="text-center text-xl">
+            Answer questions on your social skills
+          </p>
+          </div>
+          <div className="flex-col justify-center">
+          <img src="medal.svg" className="w-40"></img>
+          <p className="text-center text-xl">
+            Answer questions on your social skills
+          </p>
+          </div>
+          <div className="flex-col justify-center">
+          <img src="medal.svg" className="w-40"></img>
+          <p className="text-center text-xl">
+            Answer questions on your social skills
+          </p>
+          </div>
+          </div>
+        </div>
     </main>
   );
 };

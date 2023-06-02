@@ -1,7 +1,6 @@
 'use client'
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import "../components/data.json";
 import timelineElements from "./TimelineElements";
 
 const VerticalSlider = () => {
