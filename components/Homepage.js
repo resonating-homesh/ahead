@@ -1,6 +1,9 @@
 "use client";
+// import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
 import "swiper/css";
+import "swiper/css/autoplay";
 import VerticalSlider from "./VerticalSlider";
 import ScrollerElements from "./ScrollerElements";
 import gsap from "gsap";
@@ -82,12 +85,12 @@ const Homepage = () => {
           </div>
           <div className="swiper my-10">
             <Swiper
+            modules={[Autoplay]}
               spaceBetween={50}
               slidesPerView={3}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
-              autoplay={{ delay: 500, disableOnInteraction: false }}
-              speed={500}
+              autoplay={{ delay:500 }}
             >
               <div className="m-10">
                 <SwiperSlide>
