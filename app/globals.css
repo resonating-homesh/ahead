@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,6 +20,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: "Montserrat", sans-serif;
 }
 
 /* .navbar {
@@ -29,27 +31,31 @@ body {
   background-color: #efebff;
 }
 .circle1 {
-position: relative;
-width: 300px;
-height: 300px;
-border-radius: 50%;
-background: #DED6F8;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #ded6f8;
 }
 .circle2 {
-/* box-sizing: border-box; */
-position: relative;
-left: -100px;
-top: -100px;
-width: 490px;
-height: 490px;
-background: radial-gradient(50% 50% at 50% 50%, #DED6F8 8.00%, rgba(239, 235, 255, 0.71) 100%);
-border: 5px dashed #FFFFFF;
-border-radius: 50%;
+  /* box-sizing: border-box; */
+  position: relative;
+  left: -100px;
+  top: -100px;
+  width: 490px;
+  height: 490px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #ded6f8 8%,
+    rgba(239, 235, 255, 0.71) 100%
+  );
+  border: 5px dashed #ffffff;
+  border-radius: 50%;
 }
-.rounded-large{
+.rounded-large {
   border-radius: 30px;
 }
-.circle{
+.circle {
   position: relative;
   top: -150px;
   left: -84px;
@@ -85,11 +91,37 @@ border-radius: 50%;
 }
 
 .container::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3); /* Customize the scrollbar thumb color */
+  background-color: transparent;
   border-radius: 4px; /* Adjust the border-radius as needed */
 }
 
 .container::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the scrollbar track color */
+}
+
+.text-theme {
+  color: #6441EF;
+}
+
+.container2 {
+  height: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+ scrollbar-color: #B3A0FB;
+}
+
+.container2::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+.container2::-webkit-scrollbar-thumb {
+  background-color: #B3A0FB; /* Customize the scrollbar thumb color */
+  border-radius: 4px; /* Adjust the border-radius as needed */
+}
+
+.container2::-webkit-scrollbar-track {
   background-color: transparent; /* Set the scrollbar track color */
 }
 
@@ -102,4 +134,50 @@ border-radius: 50%;
   padding: 10px;
   /* or */
   margin: 10px;
+}
+
+.line {
+  position: relative;
+  border: 2px dashed #fcc857;
+  width: 850px;
+  transform: translate(0px, 125px);
+  z-index: -10;
+}
+.line2 {
+  position: relative;
+  width: 725px;
+  height: 2px;
+  background-color: gray;
+  transform: translate(0px, 100px);
+  z-index: -10;
+}
+
+.vacancies {
+  transition: 1s ease;
+}
+
+.vacancies button {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.vacancies:hover {
+  background-color: #FEE388;
+}
+
+.vacancies:hover button {
+  opacity: 1;
+}
+
+.ghostP {
+  z-index: 20;
+  transform: translate(250px, 150px) rotate(16deg);
+}
+.ghostR {
+  z-index: 20;
+  transform: translate(580px, -30px) rotate(20deg);
+}
+.ghostC {
+  z-index: 20;
+  transform: translate(350px, -200px) rotate(-10deg);
 }

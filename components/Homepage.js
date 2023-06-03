@@ -393,7 +393,54 @@ const Homepage = () => {
         </div>
       </div>
       {/* section8 ends */}
-     
+      {/* section9  */}
+      <div className=" flex-col m-16">
+        <p className="text-6xl font-bold">Open Vacancies</p>
+        <div className="flex justify-between my-10 p-10">
+          <div className="vacancies rounded-2xl p-10">
+            <p className="font-semibold text-2xl py-3">
+              Senior Full-Stack Engineer
+            </p>
+            <ul className="list-disc ml-5">
+              <li className="my-2 font-medium text-base">Full-time position</li>
+              <li className="my-2 font-medium text-base ">Berlin or remote</li>
+              <li className="my-2 font-medium text-base">
+                $65-85k, 0.5-1.50% equity share options
+              </li>
+            </ul>
+            <button className="bg-black mt-4 px-5 py-4 rounded-full  text-white">
+              See details
+            </button>
+          </div>
+          <div className="vacancies rounded-2xl p-10">
+            <p className="font-semibold text-2xl py-3">Senior Designer</p>
+            <ul className="list-disc ml-5">
+              <li className="my-2 font-medium text-base">Full-time position</li>
+              <li className="my-2 font-medium text-base ">Berlin or remote</li>
+              <li className="my-2 font-medium text-base">
+                $65-85k, 0.5-1.50% equity share options
+              </li>
+            </ul>
+            <button className="bg-black mt-4 px-5 py-4 rounded-full  text-white">
+              See details
+            </button>
+          </div>
+          <div className="vacancies rounded-2xl p-10">
+            <p className="font-semibold text-2xl py-3">Rockstar Intern</p>
+            <ul className="list-disc ml-5">
+              <li className="my-2 font-medium text-base">Full-time position</li>
+              <li className="my-2 font-medium text-base ">Berlin or remote</li>
+              <li className="my-2 font-medium text-base">
+                $65-85k, 0.5-1.50% equity share options
+              </li>
+            </ul>
+            <button className="bg-black mt-4 px-5 py-4 rounded-full  text-white">
+              See details
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* section9 ends */}
     </main>
   );
 };
