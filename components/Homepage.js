@@ -18,12 +18,32 @@ const Homepage = () => {
   const title2Ref = useRef(null);
   const circleRef = useRef(null);
   const medalRef = useRef(null);
+  const medal1Ref = useRef(null);
+  const medal2Ref = useRef(null);
+  const medal3Ref = useRef(null);
+  const medalContainerRef = useRef(null);
   const happyGhostRef = useRef(null);
   const angryGhostRef = useRef(null);
   const cryingGhostRef = useRef(null);
+  const lineRef = useRef(null);
+  const line2Ref = useRef(null);
+  const youRef = useRef(null);
+  const a1Ref = useRef(null);
+  const a2Ref = useRef(null);
+  const a3Ref = useRef(null);
+  const flowSequenceRef = useRef(null);
   const title2Element = title2Ref.current;
   const circleElement = circleRef.current;
   const medalElement = medalRef.current;
+  const medal1Element = medal1Ref.current;
+  const medal2Element = medal2Ref.current;
+  const medal3Element = medal3Ref.current;
+  const lineRefElement = lineRef.current;
+  const line2RefElement = line2Ref.current;
+  const youRefElement = youRef.current;
+  const a1RefElement = a1Ref.current;
+  const a2RefElement = a2Ref.current;
+  const a3RefElement = a3Ref.current;
   const happyGhostElement = happyGhostRef.current;
   const angryGhostElement = angryGhostRef.current;
   const cryingGhostElement = cryingGhostRef.current;
@@ -109,7 +129,7 @@ const Homepage = () => {
       {
         rotate: -100,
         x: 300,
-        y: 0
+        y: 0,
       },
       {
         rotate: -50,
@@ -130,7 +150,7 @@ const Homepage = () => {
       {
         rotate: -100,
         x: 300,
-        y: 0
+        y: 0,
       },
       {
         rotate: 0,
@@ -144,12 +164,69 @@ const Homepage = () => {
         },
       }
     );
-    gsap.to(
-      cryingGhostElement,
+    gsap.to(cryingGhostElement, {
+      rotate: 0,
+      scrollTrigger: {
+        trigger: title2Element,
+      },
+    });
+  };
+  const medalSequenceAnimation = () => {
+    const timeline = gsap.timeline({ defaults: { duration: 0.4 } });
+    timeline
+      .fromTo(
+        [medal1Element, youRefElement],
+        {
+          scale: 0,
+          opacity: 0,
+          ease: "power1",
+        },
+        {
+          delay: 1,
+          scale: 1,
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        [medal2Element, a1RefElement],
+        {
+          scale: 0,
+          opacity: 0,
+          ease: "power1",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+        }
+      )
+      .fromTo([medal3Element, a2RefElement], {
+        scale: 0,
+        opacity: 0,
+        ease: "power1",
+      },{
+        scale: 1,
+        opacity: 1,
+      })
+      .fromTo(a3RefElement, {
+        scale: 0,
+        opacity: 0,
+        ease: "power1",
+      },{
+        scale: 1,
+        opacity: 1,
+      })
+  };
+  const lineAnimation = () => {
+    gsap.fromTo(
+      lineRefElement,
       {
-        rotate: 0,
+       opacity: 0
+      },
+      {
+        opacity: 1,
+        duration: 5, 
         scrollTrigger: {
-          trigger: title2Element,
+          trigger: lineRefElement,
         },
       }
     );
@@ -159,57 +236,83 @@ const Homepage = () => {
   const intersection = useIntersection(title2Ref, {
     root: null,
     rootMargin: "0px",
-    threshold: 0.2,
+    threshold: 0.6,
   });
   const intersectionCircle = useIntersection(circleRef, {
     root: null,
     rootMargin: "0px",
-    threshold: 0.2,
+    threshold: 0.6,
   });
   const intersectionMedal = useIntersection(medalRef, {
     root: null,
     rootMargin: "0px",
-    threshold: 0.2,
+    threshold: 0.6,
   });
   const intersectionHappyGhost = useIntersection(happyGhostRef, {
-    root:null,
+    root: null,
     rootMargin: "0px",
-    threshold: 0.2,
+    threshold: 0.6,
   });
   const intersectionAngryGhost = useIntersection(angryGhostRef, {
-    root:null,
+    root: null,
     rootMargin: "0px",
-    threshold: 0.2,
+    threshold: 0.6,
   });
   const intersectionCryingGhost = useIntersection(cryingGhostRef, {
-    root:null,
+    root: null,
     rootMargin: "0px",
-    threshold: 0.2,
-  })
+    threshold: 0.6,
+  });
+  const intersectionMedalContainer = useIntersection(medalContainerRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6,
+  });
+  const intersectionFlowSequence = useIntersection(flowSequenceRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6,
+  });
+  
 
   // triggering animation functions
-  if (intersection && intersection.intersectionRatio < 0.2) {
+  if (intersection && intersection.intersectionRatio < 0.6) {
     title2Animation();
   }
-  if (intersectionCircle && intersectionCircle.intersectionRatio < 0.2) {
+  if (intersectionCircle && intersectionCircle.intersectionRatio < 0.6) {
     circleAnimation();
   }
-  if (intersectionMedal && intersectionMedal.intersectionRatio < 0.2) {
+  if (intersectionMedal && intersectionMedal.intersectionRatio < 0.6) {
     medalAnimation();
   }
-  if (intersectionHappyGhost && intersectionHappyGhost.intersectionRatio < 0.2) {
+  if (
+    intersectionHappyGhost &&
+    intersectionHappyGhost.intersectionRatio < 0.6
+  ) {
     happyGhostAnimation();
   }
-  if (intersectionAngryGhost && intersectionAngryGhost.intersectionRatio < 0.2) {
+  if (
+    intersectionAngryGhost &&
+    intersectionAngryGhost.intersectionRatio < 0.6
+  ) {
     angryGhostAnimation();
   }
-  if (intersectionCryingGhost && intersectionCryingGhost.intersectionRatio < 0.2) {
+  if (
+    intersectionCryingGhost &&
+    intersectionCryingGhost.intersectionRatio < 0.6
+  ) {
     cryingGhostAnimation();
+  }
+  if (
+    intersectionMedalContainer &&
+    intersectionMedalContainer.intersectionRatio < 0.6
+  ) {
+    medalSequenceAnimation();
+    lineAnimation();
   }
 
   useEffect(() => {
     const titleElement = titleRef.current;
-
     gsap.from(titleElement, {
       x: -100,
       opacity: 0,
@@ -277,7 +380,12 @@ const Homepage = () => {
             <p id="title2" ref={title2Ref} className="text-6xl font-bold">
               Does this sound familiar...
             </p>
-            <img id="ghost1" src="ghost1.svg" className="w-16 mx-5" ref={angryGhostRef} />
+            <img
+              id="ghost1"
+              src="ghost1.svg"
+              className="w-16 mx-5"
+              ref={angryGhostRef}
+            />
           </div>
           <div className="swiper my-10">
             <Swiper
@@ -369,13 +477,17 @@ const Homepage = () => {
         </div>
         <div className="flex justify-between gap-96  overflow-hidden">
           <div className="left my-28">
-            <img src="ghost-happy.svg" className="w-60 z-10 mx-24" ref={happyGhostRef} />
+            <img
+              src="ghost-happy.svg"
+              className="w-60 z-10 mx-24"
+              ref={happyGhostRef}
+            />
             <img
               src="circle.svg"
               className="circle w-64 "
               ref={circleRef}
             ></img>
-            <img src="medal.svg" className="medal w-16" ref={medalRef} ></img>
+            <img src="medal.svg" className="medal w-16" ref={medalRef}></img>
             <img src="clutter-1.svg" className="clutter1 w-12"></img>
           </div>
           <div className="right my-28 mx-20">
@@ -398,7 +510,11 @@ const Homepage = () => {
         </p>
         <div className="flex">
           <p className="text-6xl font-bold my-3">Self-improvement. Ugh.</p>
-          <img src="ghost-crying.svg" className="w-16 mx-10" ref={cryingGhostRef} ></img>
+          <img
+            src="ghost-crying.svg"
+            className="w-16 mx-10"
+            ref={cryingGhostRef}
+          ></img>
         </div>
         <div className="container my-5">
           <div className="scrollable-content">
@@ -435,23 +551,32 @@ const Homepage = () => {
           social skills.
         </p>
         <p className="text-center text-6xl my-4 font-bold">
-          {" "}
-          Ever wondered what others think of you?{" "}
+          Ever wondered what others think of you?
         </p>
         <div className="flex justify-center align-middle items-center">
-          <div className="px-48 line"></div>
+          <div className="px-48 line" ref={lineRef}></div>
         </div>
-        <div className="flex justify-between my-20 z-10">
-          <div className="flex flex-col items-center justify-center">
+        <div
+          className="flex justify-between my-20 z-10"
+          ref={medalContainerRef}
+        >
+          <div
+            className="flex flex-col items-center justify-center"
+            ref={medal1Ref}
+          >
             <img
               src="medal1.svg"
               className="w-20 align-middle justify-center"
+              ref={medal1Ref}
             ></img>
             <p className="text-center text-base  my-6 font-medium">
               Answer questions on your social skills
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div
+            className="flex flex-col items-center justify-center"
+            ref={medal2Ref}
+          >
             <img
               src="medal2.svg"
               className="w-20 align-middle justify-center"
@@ -462,7 +587,10 @@ const Homepage = () => {
               questions about you
             </p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div
+            className="flex flex-col items-center justify-center"
+            ref={medal3Ref}
+          >
             <img
               src="medal3.svg"
               className="w-20 align-middle justify-center"
@@ -474,10 +602,10 @@ const Homepage = () => {
             </p>
           </div>
         </div>
-        <div className="horizontal-timeline px-40">
-          <div className="line2"></div>
+        <div className="horizontal-timeline px-40" ref={flowSequenceRef}>
+          <div className="line2" ref={line2Ref}></div>
           <div className="flex justify-between">
-            <div className="you">
+            <div className="you" ref={youRef}>
               <div className="flex-col flex rounded-md bg-blue-600 text-white justify-center py-3 px-4 text-xl">
                 You
               </div>
@@ -486,7 +614,7 @@ const Homepage = () => {
                 You
               </div>
             </div>
-            <div className="anonymonos1">
+            <div className="anonymonos1" ref={a1Ref}>
               <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
                 Anonymonos 1
               </div>
@@ -495,7 +623,7 @@ const Homepage = () => {
                 Anonymonos 1
               </div>
             </div>
-            <div className="anonymonos2">
+            <div className="anonymonos2" ref={a2Ref}>
               <div className="flex-col flex rounded-md bg-amber-400  text-white justify-center py-3 px-4 text-xl">
                 Anonymonos 2
               </div>
@@ -504,7 +632,7 @@ const Homepage = () => {
                 Anonymonos 2
               </div>
             </div>
-            <div className="anonymonos3">
+            <div className="anonymonos3" ref={a3Ref}>
               <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
                 Anonymonos 3
               </div>
