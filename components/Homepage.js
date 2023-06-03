@@ -31,6 +31,7 @@ const Homepage = () => {
   const a1Ref = useRef(null);
   const a2Ref = useRef(null);
   const a3Ref = useRef(null);
+  const buttonRef = useRef(null);
   const flowSequenceRef = useRef(null);
   const title2Element = title2Ref.current;
   const circleElement = circleRef.current;
@@ -47,6 +48,7 @@ const Homepage = () => {
   const happyGhostElement = happyGhostRef.current;
   const angryGhostElement = angryGhostRef.current;
   const cryingGhostElement = cryingGhostRef.current;
+  const buttonRefElement = buttonRef.current;
 
   //functions to trigger animation
   const title2Animation = () => {
@@ -218,7 +220,7 @@ const Homepage = () => {
   };
   const lineAnimation = () => {
     gsap.fromTo(
-      lineRefElement,
+      [lineRefElement, line2RefElement],
       {
        opacity: 0
       },
@@ -227,6 +229,23 @@ const Homepage = () => {
         duration: 5, 
         scrollTrigger: {
           trigger: lineRefElement,
+        },
+      }
+    );
+  };
+  const buttonAnimation = () => {
+    gsap.fromTo(
+      buttonRefElement,
+      {
+        scale: 0
+      },
+      {
+        scale: 1,
+        duration: 0.7,
+        delay: 0.5,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: buttonRefElement,
         },
       }
     );
@@ -268,7 +287,7 @@ const Homepage = () => {
     rootMargin: "0px",
     threshold: 0.6,
   });
-  const intersectionFlowSequence = useIntersection(flowSequenceRef, {
+  const intersectionButton = useIntersection(buttonRef, {
     root: null,
     rootMargin: "0px",
     threshold: 0.6,
@@ -309,6 +328,12 @@ const Homepage = () => {
   ) {
     medalSequenceAnimation();
     lineAnimation();
+  }
+  if (
+    intersectionButton &&
+    intersectionButton.intersectionRatio < 0.6
+  ) {
+    buttonAnimation();
   }
 
   useEffect(() => {
@@ -658,7 +683,7 @@ const Homepage = () => {
           <p className="my-3 font-medium"> with love,</p>
           <img src="sign.png" alt="text" className="mx-2" />
         </div>
-        <button className=" rounded-full bg-black text-white px-5 py-3 m-5 font-medium text-lg">
+        <button className=" rounded-full bg-black text-white px-5 py-3 m-5 font-medium text-lg" ref={buttonRef} >
           Start a test
         </button>
         <p className="text-gray-600 font-medium"> Takes only 5 minutes</p>
