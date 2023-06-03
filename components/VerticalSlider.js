@@ -7,7 +7,9 @@ const VerticalSlider = () => {
     let beadIcon = { background: "#6441EF" }
   return (
     <div>
-    <VerticalTimeline layout={"1-column-left"} lineColor={"#6441EF"}>
+    <VerticalTimeline
+     layout={"1-column-left"}
+     lineColor={"#6441EF"}>
         {
             timelineElements.map(element => {
                 return (
