@@ -314,6 +314,26 @@ const Homepage = () => {
         </div>
       </div>
       {/* section6 ends */}
+            {/* section7 */}
+            <div className="mx-64 flex-col text-center p-52 ">
+        <p className="font-medium text-lg"> We take privacy seriously </p>
+        <p className="font-bold text-3xl my-2"> Before you get started </p>
+        <p className="font-medium text-lg my-5 text-gray-600">
+          {" "}
+          "We won't share your answers with anyone (and won't ever tell
+          <br /> you which friends said what about you)"
+        </p>
+        <div className="flex justify-center items-baseline">
+          <p className="my-3 font-medium"> with love,</p>
+          <img src="sign.png" alt="text" className="mx-2" />
+        </div>
+        <button className=" rounded-full bg-black text-white px-5 py-3 m-5 font-medium text-lg">
+          Start a test
+        </button>
+        <p className="text-gray-600 font-medium"> Takes only 5 minutes</p>
+      </div>
+      {/* section7 ends */}
+     
     </main>
   );
 };
