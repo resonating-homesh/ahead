@@ -1,5 +1,4 @@
 "use client";
-// import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
@@ -9,6 +8,8 @@ import ScrollerElements from "./ScrollerElements";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+gsap.registerPlugin(MotionPathPlugin);
 import { useIntersection } from "react-use";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -203,32 +204,40 @@ const Homepage = () => {
           opacity: 1,
         }
       )
-      .fromTo([medal3Element, a2RefElement], {
-        scale: 0,
-        opacity: 0,
-        ease: "power1",
-      },{
-        scale: 1,
-        opacity: 1,
-      })
-      .fromTo(a3RefElement, {
-        scale: 0,
-        opacity: 0,
-        ease: "power1",
-      },{
-        scale: 1,
-        opacity: 1,
-      })
+      .fromTo(
+        [medal3Element, a2RefElement],
+        {
+          scale: 0,
+          opacity: 0,
+          ease: "power1",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+        }
+      )
+      .fromTo(
+        a3RefElement,
+        {
+          scale: 0,
+          opacity: 0,
+          ease: "power1",
+        },
+        {
+          scale: 1,
+          opacity: 1,
+        }
+      );
   };
   const lineAnimation = () => {
     gsap.fromTo(
       [lineRefElement, line2RefElement],
       {
-       opacity: 0
+        opacity: 0,
       },
       {
         opacity: 1,
-        duration: 5, 
+        duration: 5,
         scrollTrigger: {
           trigger: lineRefElement,
         },
@@ -239,7 +248,7 @@ const Homepage = () => {
     gsap.fromTo(
       buttonRefElement,
       {
-        scale: 0
+        scale: 0,
       },
       {
         scale: 1,
@@ -257,7 +266,7 @@ const Homepage = () => {
       excitedGhostElement,
       {
         scale: 0.4,
-        rotate: 10
+        rotate: 10,
       },
       {
         scale: 1.4,
@@ -317,7 +326,6 @@ const Homepage = () => {
     rootMargin: "0px",
     threshold: 0.6,
   });
-  
 
   // triggering animation functions
   if (intersection && intersection.intersectionRatio < 0.6) {
@@ -354,10 +362,7 @@ const Homepage = () => {
     medalSequenceAnimation();
     lineAnimation();
   }
-  if (
-    intersectionButton &&
-    intersectionButton.intersectionRatio < 0.6
-  ) {
+  if (intersectionButton && intersectionButton.intersectionRatio < 0.6) {
     buttonAnimation();
   }
   if (
@@ -397,12 +402,10 @@ const Homepage = () => {
           className="w-14 z-10 ghostC"
         ></img>
         <img id="ghostP" src="ghost-pink.svg" className="w-20 ghostP"></img>
-        {/* <img id="ghostP" src="clutter.svg" className="w-20 ghostP"></img> */}
         <img id="ghostR" src="ghost1.svg" className="w-20 ghostR"></img>
         <div className="right p-20 py-44 my-20 mx-20">
           <div id="circle1" className="circle1 ">
             <div id="circle2" className="circle2">
-              {/* <img src="Asset 16.svg" id="circle16" className=""/> */}
               <img src="app.svg" className="w-48 my-16 ml-40"></img>
             </div>
           </div>
@@ -714,7 +717,10 @@ const Homepage = () => {
           <p className="my-3 font-medium"> with love,</p>
           <img src="sign.png" alt="text" className="mx-2" />
         </div>
-        <button className=" rounded-full bg-black text-white px-5 py-3 m-5 font-medium text-lg" ref={buttonRef} >
+        <button
+          className=" rounded-full bg-black text-white px-5 py-3 m-5 font-medium text-lg"
+          ref={buttonRef}
+        >
           Start a test
         </button>
         <p className="text-gray-600 font-medium"> Takes only 5 minutes</p>
@@ -725,7 +731,11 @@ const Homepage = () => {
         <div className="left flex-col">
           <p className="text-6xl font-bold">Work with us</p>
           <div className="px-10 my-16">
-            <img src="excited-ghost.svg" className="w-10 my-6" ref={excitedGhostRef}></img>
+            <img
+              src="excited-ghost.svg"
+              className="w-10 my-6"
+              ref={excitedGhostRef}
+            ></img>
             <div className="">
               <p className="font-bold text-3xl">About</p>
               <p className="text-gray-600 my-3 font-medium text-xl">
@@ -761,16 +771,13 @@ const Homepage = () => {
                   <h3 className="text-lg font-semibold"> {element.title2} </h3>
                   <div className="my-3">
                     <h5 className="text-gray-600 font-medium">
-                      {" "}
-                      {element.description1}{" "}
+                      {element.description1}
                     </h5>
                     <h5 className="text-gray-600 font-medium">
-                      {" "}
-                      {element.description2 ? element.description2 : ""}{" "}
+                      {element.description2 ? element.description2 : ""}
                     </h5>
                     <h5 className="text-gray-600 font-medium">
-                      {" "}
-                      {element.description3 ? element.description3 : ""}{" "}
+                      {element.description3 ? element.description3 : ""}
                     </h5>
                   </div>
                 </div>
@@ -844,8 +851,7 @@ const Homepage = () => {
         </div>
         <img src="app-store.svg" className="h-12"></img>
         <p className="my-6 text-gray-600 font-medium">
-          {" "}
-          2022 ahead app. All rights reserved.{" "}
+          2022 ahead app. All rights reserved.
         </p>
       </div>
     </main>
