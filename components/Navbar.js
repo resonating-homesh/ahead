@@ -25,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="fixed flex w-screen justify-between p-5 navbar bg-white z-10">
+    <div className="fixed flex w-screen justify-between p-5 navbar bg-white z-50">
       <div className="logo">
         <img src={isEyesOpen ? "logo1.svg" : "logo2.svg"} height={50} width={50} alt="text" />
       </div>
