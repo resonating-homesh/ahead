@@ -25,6 +25,7 @@ const Homepage = () => {
   const happyGhostRef = useRef(null);
   const angryGhostRef = useRef(null);
   const cryingGhostRef = useRef(null);
+  const excitedGhostRef = useRef(null);
   const lineRef = useRef(null);
   const line2Ref = useRef(null);
   const youRef = useRef(null);
@@ -48,6 +49,7 @@ const Homepage = () => {
   const happyGhostElement = happyGhostRef.current;
   const angryGhostElement = angryGhostRef.current;
   const cryingGhostElement = cryingGhostRef.current;
+  const excitedGhostElement = excitedGhostRef.current;
   const buttonRefElement = buttonRef.current;
 
   //functions to trigger animation
@@ -250,6 +252,24 @@ const Homepage = () => {
       }
     );
   };
+  const excitedGhostAnimation = () => {
+    gsap.fromTo(
+      excitedGhostElement,
+      {
+        scale: 0.4,
+        rotate: 10
+      },
+      {
+        scale: 1.4,
+        rotate: 0,
+        duration: 1,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: excitedGhostElement,
+        },
+      }
+    );
+  };
 
   // configuring intersection points/thresholds
   const intersection = useIntersection(title2Ref, {
@@ -288,6 +308,11 @@ const Homepage = () => {
     threshold: 0.6,
   });
   const intersectionButton = useIntersection(buttonRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6,
+  });
+  const intersectionExcitedGhost = useIntersection(buttonRef, {
     root: null,
     rootMargin: "0px",
     threshold: 0.6,
@@ -334,6 +359,12 @@ const Homepage = () => {
     intersectionButton.intersectionRatio < 0.6
   ) {
     buttonAnimation();
+  }
+  if (
+    intersectionExcitedGhost &&
+    intersectionExcitedGhost.intersectionRatio < 0.6
+  ) {
+    excitedGhostAnimation();
   }
 
   useEffect(() => {
@@ -694,7 +725,7 @@ const Homepage = () => {
         <div className="left flex-col">
           <p className="text-6xl font-bold">Work with us</p>
           <div className="px-10 my-16">
-            <img src="excited-ghost.svg" className="w-10 my-6"></img>
+            <img src="excited-ghost.svg" className="w-10 my-6" ref={excitedGhostRef}></img>
             <div className="">
               <p className="font-bold text-3xl">About</p>
               <p className="text-gray-600 my-3 font-medium text-xl">
