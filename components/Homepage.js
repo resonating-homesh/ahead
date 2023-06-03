@@ -7,28 +7,63 @@ import "swiper/css/autoplay";
 import VerticalSlider from "./VerticalSlider";
 import ScrollerElements from "./ScrollerElements";
 import gsap from "gsap";
-
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useIntersection } from "react-use";
+gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
-  // const element = document.querySelector('.ghostC');
+  const titleRef = useRef(null);
+  const title2Ref = useRef(null);
+  const title2Element = title2Ref.current;
+  const fadeIn = () => {
+    gsap.fromTo(title2Element, {
+      x: -100,
+      opacity: 0,
+    }, { 
+      x: 0,
+      opacity: 1,
+      delay: 1,
+      duration: 2,
+      ease: "power2",
+      scrollTrigger: {
+      trigger: title2Element
+      }
+     });
+  }
+  
+   const intersection = useIntersection(title2Ref, {
+    root:null,
+    rootMargin:"0px",
+    threshold: 0.2
+   });
+
+   if (intersection && intersection.intersectionRatio < 0.2) {
+    fadeIn();
+   }
+
+
+
   useEffect(() => {
-    gsap.from("#title", {
+    const titleElement = titleRef.current;
+    
+    gsap.from(titleElement, {
       x: -100,
       opacity: 0,
       duration: 1,
       delay: 0.5,
       ease: "power2",
     });
+
+    
   }, []);
 
   return (
     <main>
       <div className="flex justify-between bg-EFEBFF rounded-large">
-        <div id="title" className="left px-20 py-44 my-20">
+        <div className="left px-20 py-44 my-20" ref={titleRef}>
           <p className="text-xl font-medium">Ahead app</p>
           <p className="font-bold text-6xl my-4">
-            {" "}
             Master your life <br /> by mastering <br /> emotions
           </p>
           <div className="playstore my-10">
@@ -78,7 +113,7 @@ const Homepage = () => {
         </div>
         <div className="lower-section px-24 py-20">
           <div className="flex">
-            <p id="animation" className="text-6xl font-bold">
+            <p id="title2" ref={title2Ref} className="text-6xl font-bold">
               Does this sound familiar...
             </p>
             <img id="ghost1" src="ghost1.svg" className="w-16 mx-5" />
