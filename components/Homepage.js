@@ -441,6 +441,26 @@ const Homepage = () => {
         </div>
       </div>
       {/* section9 ends */}
+      {/* section10 */}
+      <div className="mx-20 flex flex-col items-center justify-center">
+        <img src="logo2.svg" className="h-16"></img>
+        <p className="text-theme font-bold text-3xl mt-2">ahead</p>
+        <div className="flex my-6 gap-10">
+          <p className="font-medium flex gap-2">
+            {" "}
+            <img src="map-location-dot-solid.svg" className="h-5" />{" "}
+            AuguststraBe 26, 10117 Berlin
+          </p>
+          <p className="font-medium flex gap-2">
+            <img src="envelope-solid.svg" className="h-5" /> hi2ahead-app.com
+          </p>
+        </div>
+        <img src="app-store.svg" className="h-12"></img>
+        <p className="my-6 text-gray-600 font-medium">
+          {" "}
+          2022 ahead app. All rights reserved.{" "}
+        </p>
+      </div>
     </main>
   );
 };
