@@ -225,6 +225,95 @@ const Homepage = () => {
         </p>
       </div>
       {/* section 5 ends*/}
+      {/* section 6 */}
+      <div className="flex-col justify-center px-40">
+        <p className="text-center text-2xl font-semibold">
+          Let your friends, family, and co-workers (anonymously) rate your
+          social skills.
+        </p>
+        <p className="text-center text-6xl my-4 font-bold">
+          {" "}
+          Ever wondered what others think of you?{" "}
+        </p>
+        <div className="flex justify-center align-middle items-center">
+          <div className="px-48 line"></div>
+        </div>
+        <div className="flex justify-between my-20 z-10">
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="medal1.svg"
+              className="w-20 align-middle justify-center"
+            ></img>
+            <p className="text-center text-base  my-6 font-medium">
+              Answer questions on your social skills
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="medal2.svg"
+              className="w-20 align-middle justify-center"
+            ></img>
+            <p className="text-center text-base  my-6 font-medium">
+              Let others anonymously answer the same
+              <br />
+              questions about you
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="medal3.svg"
+              className="w-20 align-middle justify-center"
+            ></img>
+            <p className="text-center text-base  my-6 font-medium">
+              Find out where you and others can see things
+              <br />
+              the same way - and where not!
+            </p>
+          </div>
+        </div>
+        <div className="horizontal-timeline px-40">
+          <div className="line2"></div>
+          <div className="flex justify-between">
+            <div className="you">
+              <div className="flex-col flex rounded-md bg-blue-600 text-white justify-center py-3 px-4 text-xl">
+                You
+              </div>
+              <div className="rounded-full bg-blue-600 h-10 w-10 my-6"></div>
+              <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
+                You
+              </div>
+            </div>
+            <div className="anonymonos1">
+              <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 1
+              </div>
+              <div className="rounded-full bg-cyan-400   h-10 w-10 my-6"></div>
+              <div className="flex-col flex rounded-md bg-cyan-400 text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 1
+              </div>
+            </div>
+            <div className="anonymonos2">
+              <div className="flex-col flex rounded-md bg-amber-400  text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 2
+              </div>
+              <div className="rounded-full bg-amber-400 h-10 w-10 my-6"></div>
+              <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 2
+              </div>
+            </div>
+            <div className="anonymonos3">
+              <div className="flex-col flex rounded-md bg-white text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 3
+              </div>
+              <div className="rounded-full bg-green-400 h-10 w-10 my-6"></div>
+              <div className="flex-col flex rounded-md bg-green-400  text-white justify-center py-3 px-4 text-xl">
+                Anonymonos 3
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* section6 ends */}
     </main>
   );
 };
