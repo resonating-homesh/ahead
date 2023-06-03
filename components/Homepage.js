@@ -19,10 +19,14 @@ const Homepage = () => {
   const circleRef = useRef(null);
   const medalRef = useRef(null);
   const happyGhostRef = useRef(null);
+  const angryGhostRef = useRef(null);
+  const cryingGhostRef = useRef(null);
   const title2Element = title2Ref.current;
   const circleElement = circleRef.current;
   const medalElement = medalRef.current;
   const happyGhostElement = happyGhostRef.current;
+  const angryGhostElement = angryGhostRef.current;
+  const cryingGhostElement = cryingGhostRef.current;
 
   //functions to trigger animation
   const title2Animation = () => {
@@ -99,6 +103,57 @@ const Homepage = () => {
       }
     );
   };
+  const angryGhostAnimation = () => {
+    gsap.fromTo(
+      angryGhostElement,
+      {
+        rotate: -100,
+        x: 300,
+        y: 0
+      },
+      {
+        rotate: -50,
+        x: 0,
+        y: -30,
+        duration: 2,
+        delay: 0.5,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+  };
+  const cryingGhostAnimation = () => {
+    gsap.fromTo(
+      cryingGhostElement,
+      {
+        rotate: -100,
+        x: 300,
+        y: 0
+      },
+      {
+        rotate: 0,
+        x: 0,
+        y: -30,
+        duration: 2,
+        delay: 0.5,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+    gsap.to(
+      cryingGhostElement,
+      {
+        rotate: 0,
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+  };
 
   // configuring intersection points/thresholds
   const intersection = useIntersection(title2Ref, {
@@ -120,6 +175,16 @@ const Homepage = () => {
     root:null,
     rootMargin: "0px",
     threshold: 0.2,
+  });
+  const intersectionAngryGhost = useIntersection(angryGhostRef, {
+    root:null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  });
+  const intersectionCryingGhost = useIntersection(cryingGhostRef, {
+    root:null,
+    rootMargin: "0px",
+    threshold: 0.2,
   })
 
   // triggering animation functions
@@ -134,6 +199,12 @@ const Homepage = () => {
   }
   if (intersectionHappyGhost && intersectionHappyGhost.intersectionRatio < 0.2) {
     happyGhostAnimation();
+  }
+  if (intersectionAngryGhost && intersectionAngryGhost.intersectionRatio < 0.2) {
+    angryGhostAnimation();
+  }
+  if (intersectionCryingGhost && intersectionCryingGhost.intersectionRatio < 0.2) {
+    cryingGhostAnimation();
   }
 
   useEffect(() => {
@@ -206,7 +277,7 @@ const Homepage = () => {
             <p id="title2" ref={title2Ref} className="text-6xl font-bold">
               Does this sound familiar...
             </p>
-            <img id="ghost1" src="ghost1.svg" className="w-16 mx-5" />
+            <img id="ghost1" src="ghost1.svg" className="w-16 mx-5" ref={angryGhostRef} />
           </div>
           <div className="swiper my-10">
             <Swiper
@@ -327,7 +398,7 @@ const Homepage = () => {
         </p>
         <div className="flex">
           <p className="text-6xl font-bold my-3">Self-improvement. Ugh.</p>
-          <img src="ghost-crying.svg" className="w-16 mx-10"></img>
+          <img src="ghost-crying.svg" className="w-16 mx-10" ref={cryingGhostRef} ></img>
         </div>
         <div className="container my-5">
           <div className="scrollable-content">
