@@ -333,6 +333,66 @@ const Homepage = () => {
         <p className="text-gray-600 font-medium"> Takes only 5 minutes</p>
       </div>
       {/* section7 ends */}
+       {/* section8 */}
+       <div className="flex justify-between p-40">
+        <div className="left flex-col">
+          <p className="text-6xl font-bold">Work with us</p>
+          <div className="px-10 my-16">
+            <img src="excited-ghost.svg" className="w-10 my-6"></img>
+            <div className="">
+              <p className="font-bold text-3xl">About</p>
+              <p className="text-gray-600 my-3 font-medium text-xl">
+                At ahead our goal is to make self-
+                <br />
+                improvement fun and lasting. We know there's <br /> a way how to
+                make it work. And that's what <br />
+                ahead is all about!
+              </p>
+            </div>
+            <div className="my-10">
+              <p className="font-bold text-3xl">Product</p>
+              <p className="text-gray-600 my-3 font-medium text-xl">
+                Sure, you could spend ages reading books or
+                <br /> sitting in seminars on how t become a better
+                <br /> spouse, parent, or manager- like we did...
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="right">
+          <p className="text-6xl font-bold text-theme mr-20 text-right">
+            ahead
+          </p>
+          <div className="container2 my-16 px-28  py-16">
+            {ScrollerElements.map((element) => {
+              return (
+                <div
+                  className={element.key === "6" ? "" : "mb-20"}
+                  key={element.key}
+                >
+                  <h3 className="text-lg font-semibold"> {element.title1} </h3>
+                  <h3 className="text-lg font-semibold"> {element.title2} </h3>
+                  <div className="my-3">
+                    <h5 className="text-gray-600 font-medium">
+                      {" "}
+                      {element.description1}{" "}
+                    </h5>
+                    <h5 className="text-gray-600 font-medium">
+                      {" "}
+                      {element.description2 ? element.description2 : ""}{" "}
+                    </h5>
+                    <h5 className="text-gray-600 font-medium">
+                      {" "}
+                      {element.description3 ? element.description3 : ""}{" "}
+                    </h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {/* section8 ends */}
      
     </main>
   );
