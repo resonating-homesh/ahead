@@ -13,40 +13,132 @@ import { useIntersection } from "react-use";
 gsap.registerPlugin(ScrollTrigger);
 
 const Homepage = () => {
+  //references
   const titleRef = useRef(null);
   const title2Ref = useRef(null);
+  const circleRef = useRef(null);
+  const medalRef = useRef(null);
+  const happyGhostRef = useRef(null);
   const title2Element = title2Ref.current;
-  const fadeIn = () => {
-    gsap.fromTo(title2Element, {
-      x: -100,
-      opacity: 0,
-    }, { 
-      x: 0,
-      opacity: 1,
-      delay: 1,
-      duration: 2,
-      ease: "power2",
-      scrollTrigger: {
-      trigger: title2Element
+  const circleElement = circleRef.current;
+  const medalElement = medalRef.current;
+  const happyGhostElement = happyGhostRef.current;
+
+  //functions to trigger animation
+  const title2Animation = () => {
+    gsap.fromTo(
+      title2Element,
+      {
+        x: -100,
+        opacity: 0,
+        scaleX: 0,
+        scaleY: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        scaleX: 1,
+        scaleY: 1,
+        delay: 0.5,
+        duration: 1,
+        ease: "power2",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
       }
-     });
-  }
-  
-   const intersection = useIntersection(title2Ref, {
+    );
+  };
+  const circleAnimation = () => {
+    gsap.fromTo(
+      circleElement,
+      {
+        x: 300,
+      },
+      {
+        x: 10,
+        duration: 2,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+  };
+  const medalAnimation = () => {
+    gsap.fromTo(
+      medalElement,
+      {
+        y: 200,
+      },
+      {
+        y: 0,
+        duration: 2,
+        delay: 0.5,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+  };
+  const happyGhostAnimation = () => {
+    gsap.fromTo(
+      happyGhostElement,
+      {
+        rotate: 50,
+      },
+      {
+        rotate: 0,
+        duration: 2,
+        delay: 0.5,
+        ease: "power1",
+        scrollTrigger: {
+          trigger: title2Element,
+        },
+      }
+    );
+  };
+
+  // configuring intersection points/thresholds
+  const intersection = useIntersection(title2Ref, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  });
+  const intersectionCircle = useIntersection(circleRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  });
+  const intersectionMedal = useIntersection(medalRef, {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  });
+  const intersectionHappyGhost = useIntersection(happyGhostRef, {
     root:null,
-    rootMargin:"0px",
-    threshold: 0.2
-   });
+    rootMargin: "0px",
+    threshold: 0.2,
+  })
 
-   if (intersection && intersection.intersectionRatio < 0.2) {
-    fadeIn();
-   }
-
-
+  // triggering animation functions
+  if (intersection && intersection.intersectionRatio < 0.2) {
+    title2Animation();
+  }
+  if (intersectionCircle && intersectionCircle.intersectionRatio < 0.2) {
+    circleAnimation();
+  }
+  if (intersectionMedal && intersectionMedal.intersectionRatio < 0.2) {
+    medalAnimation();
+  }
+  if (intersectionHappyGhost && intersectionHappyGhost.intersectionRatio < 0.2) {
+    happyGhostAnimation();
+  }
 
   useEffect(() => {
     const titleElement = titleRef.current;
-    
+
     gsap.from(titleElement, {
       x: -100,
       opacity: 0,
@@ -54,8 +146,6 @@ const Homepage = () => {
       delay: 0.5,
       ease: "power2",
     });
-
-    
   }, []);
 
   return (
@@ -120,12 +210,12 @@ const Homepage = () => {
           </div>
           <div className="swiper my-10">
             <Swiper
-            modules={[Autoplay]}
+              modules={[Autoplay]}
               spaceBetween={50}
               slidesPerView={3}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
-              autoplay={{ delay:500 }}
+              autoplay={{ delay: 500 }}
             >
               <div className="m-10">
                 <SwiperSlide>
@@ -208,9 +298,13 @@ const Homepage = () => {
         </div>
         <div className="flex justify-between gap-96  overflow-hidden">
           <div className="left my-28">
-            <img src="ghost-happy.svg" className="w-60 z-10 mx-24" />
-            <img src="circle.svg" className="circle w-64 "></img>
-            <img src="medal.svg" className="medal w-16"></img>
+            <img src="ghost-happy.svg" className="w-60 z-10 mx-24" ref={happyGhostRef} />
+            <img
+              src="circle.svg"
+              className="circle w-64 "
+              ref={circleRef}
+            ></img>
+            <img src="medal.svg" className="medal w-16" ref={medalRef} ></img>
             <img src="clutter-1.svg" className="clutter1 w-12"></img>
           </div>
           <div className="right my-28 mx-20">
@@ -352,8 +446,8 @@ const Homepage = () => {
         </div>
       </div>
       {/* section6 ends */}
-            {/* section7 */}
-            <div className="mx-64 flex-col text-center p-52 ">
+      {/* section7 */}
+      <div className="mx-64 flex-col text-center p-52 ">
         <p className="font-medium text-lg"> We take privacy seriously </p>
         <p className="font-bold text-3xl my-2"> Before you get started </p>
         <p className="font-medium text-lg my-5 text-gray-600">
@@ -371,8 +465,8 @@ const Homepage = () => {
         <p className="text-gray-600 font-medium"> Takes only 5 minutes</p>
       </div>
       {/* section7 ends */}
-       {/* section8 */}
-       <div className="flex justify-between p-40">
+      {/* section8 */}
+      <div className="flex justify-between p-40">
         <div className="left flex-col">
           <p className="text-6xl font-bold">Work with us</p>
           <div className="px-10 my-16">
